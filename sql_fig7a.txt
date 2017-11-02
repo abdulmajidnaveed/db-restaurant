@@ -1,0 +1,34 @@
+Create view 7a_V1 as 
+select  R.county as county, R.cuisine as cuisine, 
+insp.PassFail as PassFail 
+from inspection as insp, restaurant as R
+where R.rid=insp.rid and date_format(insp.idate, '%Y')=2015 and date_format(insp.idate, '%m')=10
+
+
+-- gets breakdown of county inspections (“Sub Total for # Restaurants inspected)
+select V1.county, count(*) from V1 
+group by V1.county
+
+-- get breakdown of for county inspections failed (“Sub Total for # Restaurants Failed)
+select  V1.county, count(*) from V1 
+where V1.PassFail = 'FAIL'
+group by V1.county
+
+-- get # of restaurants inspected for each cuisine (column # 3)
+select count(*), V1.county, V1.cuisine, count(*) as num_rest_inspected 
+from V1 -- where V1.PassFail = 'FAIL'
+group by V1.county, V1.cuisine
+-- get # of restaurants that failed inspections for each cuisine (column # 4)
+select V1.county, V1.cuisine, count(*) as num_rest_failed 
+from V1 
+where V1.PassFail = 'FAIL'
+group by V1.county, V1.cuisine
+
+
+-- retrieve Grand Total # restaurants inspected (bottom row, column # 3)
+select count(*) from V1
+
+-- retrieve Grand Total # restaurants failed (bottom row, column # 4)
+select  count(*)  from V1
+where V1.PassFail = 'Fail'
+

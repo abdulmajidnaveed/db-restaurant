@@ -1,0 +1,13 @@
+create view V1 as
+select  insp.idate , county, date_format(idate, '%M') as Month, count(*) as num_restaurants_inspected
+from inspection as insp, restaurant as R
+where  R.rid=insp.rid and county = 'Fulton' and date_format(insp.idate, '%Y')=2015
+group by date_format(insp.idate, '%M')
+
+Create View V2 as
+select  count(*)  
+from inspection as insp, restaurant as R
+where R.rid=insp.rid and county = 'Fulton' and date_format(insp.idate, '%Y')=2015
+--gets the Grand Total at the end of the column
+
+drop view v1

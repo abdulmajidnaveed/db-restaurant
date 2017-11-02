@@ -1,0 +1,39 @@
+create view fig5b_thisrest_inspresultsneeded as 
+select * from inspection as insp
+where insp.rid = 11
+
+create view fig5b_mostrecentdate as 
+(select max(idate) as max from fig5b_thisrest_inspresultsneeded) 
+
+create view fig5b_mostrecent2nddate as
+select max(idate) as max2 from fig5b_thisrest_inspresultsneeded 
+where idate not in (select max from fig5b_mostrecentdate )
+
+
+create view fig5b_mostrecent2dates as
+select fig5b_mostrecentdate.max as max, fig5b_mostrecent2nddate.max2 as max2
+ from fig5b_mostrecentdate, fig5b_mostrecent2nddate 
+
+
+select item.itemnum , item.description, Cmax2.score as 2ndmostrecentscore  , Cmax.score as mostrecentscore
+from item as item, `contains` as Cmax2, fig5b_mostrecent2nddate, fig5b_mostrecentdate, contains as Cmax
+where Cmax2.itemnum = item.itemnum
+and Cmax2.rid = 11 and Cmax2.idate = fig5b_mostrecent2nddate.max2
+  and Cmax.itemnum=item.itemnum 
+  and Cmax.rid = 11 and Cmax.idate = fig5b_mostrecentdate.max
+
+-- This gets the columns
+
+select insp_2ndmostrecent.totalscore as 2ndmostrecentscore, 
+insp_mostrecent.totalscore as mostrecentscore,
+insp_2ndmostrecent.PassFail as 2ndmostrecent_PassFail, 
+insp_mostrecent.PassFail as mostrecent_PassFail
+
+from inspection as insp_2ndmostrecent, inspection as insp_mostrecent, fig5b_mostrecent2nddate, fig5b_mostrecentdate
+
+where 
+insp_2ndmostrecent.rid = 11 and insp_mostrecent.rid=11 and 
+insp_2ndmostrecent.idate = fig5b_mostrecent2nddate.max2 and 
+insp_mostrecent.idate = fig5b_mostrecentdate.max
+
+-- This gets the total score and result for both of most recent 2 inspections

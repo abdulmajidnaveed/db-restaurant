@@ -1,0 +1,44 @@
+First step is to get the most recent inspection dates for each restaurant inspection. 
+
+create view v1 as 
+select   R.name as RName, concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as R_ADDRESS, 
+concat(OpOwn.firstname, ' ', OpOwn.lastname) as Op_Owner, 
+OpOwn.email as Op_email, 
+R.rid as rid, max(INSP.idate) as max_Idate 
+from  inspection  as INSP, restaurant as R , operatorowner as OpOwn 
+where 
+      OpOwn.email = R.email  and 
+      R.rid=INSP.rid   
+group by rid
+
+
+-- Use this query to get all restaurants that have some non-perfect score on a critical item on their last inspection, AND inspection score lower than a specified inspection score on their last inspection
+
+-- create view v2 as 
+select  v1.RName as RName, v1.R_ADDRESS as R_ADDRESS, 
+v1.Op_Owner as Op_Owner, v1.Op_email as Op_email, 
+v1.rid as Rid, v1.max_Idate as max_Idate , 
+C.itemnum, C.score,  I.perfectscore, I.critical, INSP.totalscore
+
+from v1, inspection  as INSP,   contains as C, item as I
+ where 
+       date_format (v1.max_Idate, '%Y')= '2015' and  
+       INSP.totalscore <= 100 and
+       v1.rid=INSP.rid and v1.max_Idate = INSP.idate and 
+      v1.rid=C.rid and -- (v1.rid=3 or v1.rid=4) and 
+      C.idate=INSP.idate and I.itemnum=C.itemnum
+      and C.score<I.perfectscore and I.critical='Y'
+ group by rid
+
+-- Finally: 
+
+create view num_complaints as
+select rid, count(*) as num_comp1 
+from complaint
+group by rid
+
+select  R.name as RName, concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as R_ADDRESS , R.rid as Rid, complaint.cdate,complaint.description as Complaint_descr , num_complaints.num_compl as num_complaints
+from restaurant as R, complaint , num_complaints
+ where complaint.rid=R.rid and num_complaints.rid = R.rid
+ and num_complaints.num_compl >= 1
+-- This gets the restaurants with # of complaints > a specified #.

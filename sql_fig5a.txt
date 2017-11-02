@@ -1,0 +1,5 @@
+select R.rid, R.name, concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as ADDRESS
+from restaurant as R, operatorowner as OP
+where R.email = OP.email
+  and OP.username = 'ppatel'
+

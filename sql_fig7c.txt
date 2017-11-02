@@ -1,0 +1,20 @@
+-- First retrieve maximum inspection scores for each cuisine
+create view temp1 as 
+select  cuisine,  max(insp.totalscore ) as max_score 
+from inspection as insp , restaurant as R
+where  R.rid=insp.rid and county = 'Fulton' and date_format(insp.idate, '%Y')=2015
+ group by cuisine
+ 
+-- then use this table
+select * -- r.name, r.street, r.city, r.state, r.zipcode
+from inspection as insp, restaurant as R, temp1
+where county='Fulton' and R.rid=insp.rid and date_format(insp.idate, '%Y')=2015
+and temp1.cuisine=R.cuisine 
+and totalscore = temp1.max_score
+
+select  R.cuisine as CUIsine, R.name as RName, concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as ADDRESS, totalscore as Insp_Score
+from inspection as insp, restaurant as R, temp1
+where county='Fulton' and R.rid=insp.rid and date_format(insp.idate, '%Y')=2015
+and temp1.cuisine=R.cuisine 
+and totalscore = temp1.max_score 
+
