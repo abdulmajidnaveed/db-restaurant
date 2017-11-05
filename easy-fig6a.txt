@@ -1,0 +1,18 @@
+Fig 6a Inspector user prompted to enter a restaurant inspection report
+
+The item description, critical attribute, and item number are all static rows of information,
+constant always. They are initialized once at the application setup, and 
+later for the life of the application they are always read from.
+
+To display fig 6a, the following simple query is used.
+
+select itemnum, description, critical
+ from item
+
+The user will enter : u_inspectorID, u_restaurantID, u_date,
+ and fifteen score numeric values: sc1, ..., sc15.
+
+The validation should ensure the constraints 
+sc1 ... sc8 are ∈ {0, ..., 9} , and
+sc9 ... sc15 are ∈ {0, ..., 4}
+are met and should not accept input otherwise.

@@ -1,3 +1,0 @@
-select itemnum, description, critical
- from item
-
