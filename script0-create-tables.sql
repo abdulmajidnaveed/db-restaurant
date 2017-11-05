@@ -1,4 +1,3 @@
-
 create table customer(
 phone char(10),
 firstname varchar(15),
@@ -29,7 +28,6 @@ create table cuisines (
 cuisine varchar(20),
 primary key (cuisine)
 ) ENGINE = InnoDB;
-
 
 create table operatorowner(
 email varchar(20),
@@ -63,7 +61,6 @@ foreign key (cuisine)
 foreign key (email) 
     references operatorowner(email)
 ) ENGINE = InnoDB;
-
 
 create table healthpermit (
 hpid integer (9),
@@ -109,7 +106,6 @@ foreign key (phone) references customer (phone),
 foreign key (rid) references restaurant(rid)
 ) ENGINE = InnoDB;
 
-
 create table contains (
 itemnum integer(2),
 rid integer (9),
@@ -129,11 +125,4 @@ primary key (itemnum, rid, idate),
 foreign key (rid, idate) references inspection (rid, idate),
 foreign key (itemnum) references item (itemnum)
 ) ENGINE = InnoDB;
-
-
-
-
-
-
-
 
