@@ -1,0 +1,13 @@
+
+Guest user: filing a complaint about a restaurant. Fig 3.
+
+User chooses a restaurant_id from the GUI restaurant dropdown etc.
+Call this user_selected_rest_rid.
+
+User enters:
+  customer_dateOfMeal, customer_firstName,
+  customer_lastName, customer_phoneNumber, customer_complaint
+
+This is then used in the insert statement to insert a record into
+the complaint table. The customer is also recorded in the customer table.
+

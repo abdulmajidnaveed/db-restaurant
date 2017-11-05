@@ -1,0 +1,31 @@
+
+Restaurant operator user: to enter information about their restaurant.
+Fig 4.
+This creates a restaurant ID for this restaurant.
+
+User is logged in, we have their email, phone from operatorowner table.
+restaurantOperator_email, restaurantOperator_phone
+
+User enters:
+  user_healthPermitId, user_healthPermitExpirationDate,
+  restaurant_cuisine,
+  restaurant_name,
+  restaurant_street, restaurant_city, restaurant_state, restaurant_zipcode,
+  restaurant_county, restaurant_phone
+
+These are used in the insert statement to insert a record into
+the restaurant table.
+The health permit information is also inserted as a record into the healthpermit table.
+
+insert into restaurant 
+  ( phone, name, street, city, state, zipcode, county, cuisine, email )
+  values ( restaurant_phone, restaurant_name, restaurant_street, restaurant_city,
+   restaurant_state, restaurant_zipcode, restaurant_county, restaurant_cuisine,
+   restaurantOperator_email );
+This inserts a record into restaurant table, with id restaurant_id.
+
+insert into healthpermit 
+  ( hpid, expirationdate, rid )
+ values ( user_healthPermitId, user_healthPermitExpirationDate, restaurant_id );
+
+

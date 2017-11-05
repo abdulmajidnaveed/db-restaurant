@@ -1,0 +1,13 @@
+
+Inspector user: to enter additional comments about any item on inspection list.
+Fig 6b.
+
+This is an insert into includes table.
+
+The user will enter u_comment, u_itemnum (restaurant Id and date are entered 
+from previous screenfig 6a). Denote these by 
+u_itemnum, u_restId, u_idate, u_comment.
+
+insert into includes ( itemnum, rid, idate, comment )
+ values ( u_itemnum, u_restId, u_idate, u_comment);
+
