@@ -1,15 +1,14 @@
 
-Guest user: to search for restaurants. Fig 2b.
+-- Guest user: to search for restaurants. Fig 2b.
 
 
-From GUI, user entered values : 
-  user_inspectionScore, user_zipcode, user_restaurantName, user_cuisine
-  user_selectedScoreComparisonOperation (">" or "<")
+-- From GUI, user entered values : 
+--   user_inspectionScore, user_zipcode, user_restaurantName, user_cuisine
+--   user_selectedScoreComparisonOperation (">" or "<")
 
-This gets the date of last inspection for each restaurant
-
+-- This gets the date of last inspection for each restaurant
 create view fig2b_lastinspec_date as 
-select  R.rid as rid,  max(insp.idate) as lastinspecdate 
+select R.rid as rid,  max(insp.idate) as lastinspecdate 
 from restaurant as R, inspection as insp
 where R.rid = insp.rid
 group by rid
@@ -38,4 +37,5 @@ where R.rid = insp.rid and fig2b_lastinspec_date.lastinspecdate = insp.idate
     THEN (insp.totalscore > user_inspectionScore )
     ELSE (insp.totalscore < user_inspectionScore) END
 order by totalscore desc
+
 
