@@ -1,5 +1,24 @@
-select R.rid, R.name, concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as ADDRESS
+
+Restaurant operator user: to display health inspection report results for 
+the last two inspections.
+Fig 5a.
+
+User selects search criteria from dropdown that lists all restaurant information
+associated with this user.
+
+User is logged in, we have their 
+  email, phone, username, firstname, lastname 
+from operatorowner table.
+  restaurantOperator_email, restaurantOperator_username
+
+Join tables restaurant, operatorowner, on field email 
+(restaurant has a foreign key email, that is a primary key of operatorowner)
+also enforce matching with user login information - 
+ operatorowner has a foreign key username )
+
+select R.rid, R.name, 
+  concat(R.street, ', ', R.city, ', ' , R.state, ', ',R.zipcode) as ADDRESS
 from restaurant as R, operatorowner as OP
 where R.email = OP.email
-  and OP.username = 'ppatel'
-
+  and OP.username = restaurantOperator_username 
+  and OP.email = restaurantOperator_email -- not necessary, but good to be sure

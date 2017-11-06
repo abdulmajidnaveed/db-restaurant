@@ -1,19 +1,8 @@
 
-Restaurant operator user: to display health inspection report results for 
-the last two inspections. Fig 5b.
+-- Restaurant operator user: to display health inspection report results for 
+-- the last two inspections. Fig 5b.
 
-A restaurant has been selected in Fig 5a.
-We have the restaurant ID for this restaurant - restaurant_id
-
-Information we want to show is in 
- inspection, contains, item tables
-
-[ Todo: 
-| improvement note: retrieve top 2 most recent dates together
-| by order, limit ... ]
-
-
--- step i: get the most recent two dates
+-- Restaurant selected - restaurant_id
 
 create view fig5b_thisrest_inspresultsneeded as 
 select * from inspection as insp
@@ -29,7 +18,6 @@ where idate not in (select max from fig5b_mostrecentdate )
 -- create view fig5b_mostrecent2dates as
 --   select fig5b_mostrecentdate.max as max, fig5b_mostrecent2nddate.max2 as max2
 --   from fig5b_mostrecentdate, fig5b_mostrecent2nddate 
-
 
 ----------------------------------------------
 -- step ii: get the data in the form of a custom table containing 
@@ -77,5 +65,7 @@ where
 -- This gets the total score and pass/fail result for both of 
 -- the most recent 2 inspections
 
-----------------------------------------------
-delete views...
+
+-- delete views...
+
+
