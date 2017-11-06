@@ -1,8 +1,6 @@
 
 -- Inspector user: to view summary report of type 3. Fig 7c.
 -- Top Health Inspection Ranked Restaurants
---  summary report about restaurant inspections for specified year and county
---  listing restaurant with top health inspection rating for year by cuisine
 
 -- From GUI, user entered values :
 --  user_county, user_year

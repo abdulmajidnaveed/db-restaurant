@@ -13,7 +13,6 @@ where R.rid=insp.rid and county = user_county and date_format(insp.idate, '%Y')=
 group by date_format(insp.idate, '%M')
 -- gets the table of month and restaurants inspected that month
 
-
 create view 7bV2 as
 select count(*)
 from inspection as insp, restaurant as R
@@ -22,5 +21,3 @@ where R.rid=insp.rid and county = user_county and date_format(insp.idate, '%Y')=
 
 drop view 7bV1
 drop view 7bV2
-
-
