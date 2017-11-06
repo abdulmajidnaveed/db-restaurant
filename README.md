@@ -4,8 +4,11 @@ This repository showcases some of the work done in back-end development for a re
 ## Files
 
 * Table creation
-> Tables were designed for the entities. The file script0-create-tables.txt contains the create table statements. The tables setup were for : 
-> customer, registereduser, inspector, operatorowner, 
+> Tables were designed for the entities. The file script0-create-tables.sql contains the create table statements.
+> The tables created are:
+> 
+> customer, registereduser, inspector, operatorowner,
+>
 > restaurant, cuisines, healthpermit, item, inspection, complaint.
 
 * SQL queries
