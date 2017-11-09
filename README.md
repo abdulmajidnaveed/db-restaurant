@@ -1,13 +1,14 @@
 # Restaurant Quality Control
 This repository showcases some of the work done in back-end development for a restaurant quality control management project. MySQL was used as the relational database.
-![preview](preview/img0.png)
+
 ## Files
 
 * Table creation
 > Tables were designed for the entities. The file script0-create-tables.sql contains the create table statements.
 >
 > The user entities are customer, operator owner and inspector. Correspondingly, tables 
-> registereduser, customer, inspector, operatorowner
+>
+> `registereduser, customer, inspector, operatorowner`
 > 
 > were created. Other entities in the problem include
 > 
