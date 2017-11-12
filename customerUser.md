@@ -21,7 +21,7 @@ insert into complaint ( rid, phone, cdate, description )
 
 
 <html><body><p>.sql</p>
-<iframe src='sql_fig3.sql' width='90%' height="250px"
+<iframe src='page-fig3.html' width='90%' height="250px"
 style="border:1px solid lightgrey;"
 scrolling='auto'></iframe>
 </body></html>
