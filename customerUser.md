@@ -10,11 +10,15 @@ scrolling='auto'></iframe>
 
 Customer user prompted to enter a food safety complaint for a restaurant.
 
-User chooses a restaurant_id : user_selected_rest_rid.
-User enters:
-  → customer_dateOfMeal, customer_firstName,
-  → customer_lastName, customer_phoneNumber, customer_complaint
+User chooses a restaurant_id : 
+> user_selected_rest_rid.
 
+User enters:
+
+>  → customer_dateOfMeal, customer_firstName,
+>
+>  → customer_lastName, customer_phoneNumber, customer_complaint
+>
 
 SQL statements:
 
