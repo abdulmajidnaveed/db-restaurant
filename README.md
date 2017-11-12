@@ -4,6 +4,7 @@ This repository showcases some of the work done in back-end development for a re
 ## Files
 
 * Table creation
+
 Tables were designed for the entities. The file `script0-create-tables.sql` contains the create table statements that define the schema.
 
 The user entities are *customer*, *operator owner* and *inspector*. Correspondingly, tables
