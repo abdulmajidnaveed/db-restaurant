@@ -1,7 +1,7 @@
 var fC = {};
-fC.fileName1Path = '..';
+fC.fileName1Path = './sql';
 fC.forwardSlash = '/';
-fC.fileName1 = 'sql_fig2b.sql';//'sql'+fC.forwardSlash+'sql_fig2b.sql';
+fC.fileName1 = 'sql'+fC.forwardSlash+'sql_fig2b.sql';
 //  fC.fileName1Path = (fC.fileName1Path+fC.forwardSlash+fC.fileName1);
 Globals={};
 Globals.textProp = '';
@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 
 function selectonchange(val) {
-    fC.fileName1 = val;//'sql'+fC.forwardSlash+ val;
+    fC.fileName1 = 'sql'+fC.forwardSlash+ val;
     // console.log('selected:', val);
     $("#optionShow").val(val);
     // console.log(fC.fileName1);
