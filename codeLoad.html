@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL codeview</title>
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- <script src='jquery.min.js'> </script> -->
+        <script src='codeLoad.js'></script>
+        <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css'> -->
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/arta.min.css'>
+        <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js">
+        </script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body style="margin-left: 00px; padding: 10px 20px;">
+        <h1 style="margin:0"> SQL Code Viewer </h1>
+        <label style="display: block;"> File selected: </label>
+        <input id="optionShow" type="text" disabled value="sql_fig2b.sql"></input>
+        <select style="height:26px;" onchange="selectonchange(this.value);">
+            <option value="script0-create-tables.sql">script0-create-tables</option>
+            <option selected="selected" value="sql_fig2b.sql">sql_fig2b</option>
+            <option value="sql_fig3.sql">sql_fig3</option>
+            <option value="sql_fig4.sql">sql_fig4</option>
+            <option value="sql_fig5a.sql">sql_fig5a</option>
+            <option value="sql_fig5b.sql">sql_fig5b</option>
+            <option value="sql_fig6a.sql">sql_fig6a</option>
+            <option value="sql_fig6b.sql">sql_fig6b</option>
+            <option value="sql_fig7a.sql">sql_fig7a</option>
+            <option value="sql_fig7b.sql">sql_fig7b</option>
+            <option value="sql_fig7c.sql">sql_fig7c</option>
+            <option value="sql_fig7d.sql">sql_fig7d</option>
+        </select>
+        <button style="width: 100px;">Load</button>
+        <p/>
+        <div>
+            <div style="max-width:800px;">
+                <h3>Code</h3>
+                <pre id='div1file'>
+                    <code class="sql" id='div1filecode'>
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </body>
+
+</html>
